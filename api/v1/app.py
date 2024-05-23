@@ -4,10 +4,18 @@ from flask import Flask
 from models import storage
 from api.v1.views import app_views
 from os import getenv
+import json
 
 
 app = Flask(__name__)
 app.register_blueprint(app_views)
+
+
+@app.errorhandler(404)
+def trigger_error(err):
+    """ Triggers a 404 error """
+    return (json.dumps({"error": "Not found"}, indent=4) + '\n',
+            404, {'Content-Type': 'application/json'})
 
 
 @app.teardown_appcontext
