@@ -1,4 +1,4 @@
-# AirBnb Clone - RESTful API
+# AirBnB Clone - RESTful API
 Currently under development...
 
 # AirBnB Clone - The Console
