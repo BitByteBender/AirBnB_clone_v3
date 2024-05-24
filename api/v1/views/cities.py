@@ -49,7 +49,7 @@ def del_city(city_id):
         return (jsonify({"error": str(e)}), 500)
 
 
-@app_views.route(SPATH + '/<states_id>' + CPATH,
+@app_views.route(SPATH + '/<state_id>' + CPATH,
                  methods=['POST'], strict_slashes=False)
 def insert_city(state_id):
     """ Inserts a City obj """
@@ -61,7 +61,7 @@ def insert_city(state_id):
     new = City(**dt)
     storage.new(new)
     storage.save()
-    return (json.dumps(new.to_dict()) + '\n', 201)
+    return (json.dumps(new.to_dict(), indent=2) + '\n', 201)
 
 
 @app_views.route(CPATH + '/<city_id>',
