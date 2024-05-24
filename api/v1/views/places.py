@@ -59,6 +59,7 @@ def insert_place(city_id):
         abort(400, "Missing user_id")
     if "name" not in dt:
         abort(400, "Misssing name")
+    user_obj = storage.get(User, dt['user_id']) or abort(404)
     dt['city_id'] = city_id
     new = Place(**dt)
     storage.new(new)
