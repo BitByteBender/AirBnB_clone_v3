@@ -55,6 +55,8 @@ def insert_place(city_id):
     """ Inserts a Place obj """
     city_obj = storage.get(City, city_id) or abort(404)
     dt = request.get_json() or abort(400, "Not a JSON")
+    if "user_id" not in dt:
+        abort(400, "Missing user_id")
     if "name" not in dt:
         abort(400, "Misssing name")
     dt['city_id'] = city_id
