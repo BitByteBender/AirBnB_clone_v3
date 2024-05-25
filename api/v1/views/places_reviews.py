@@ -59,10 +59,10 @@ def insert_review(place_id):
     if "user_id" not in dt:
         abort(400, "Missing user_id")
     if "text" not in dt:
-        abort(400, "Misssing text")
+        abort(400, "Missing text")
     user_obj = storage.get(User, dt['user_id']) or abort(404)
     dt['place_id'] = place_id
-    new = Place(**dt)
+    new = Review(**dt)
     storage.new(new)
     storage.save()
     return (json.dumps(new.to_dict(), indent=2) + '\n', 201)
