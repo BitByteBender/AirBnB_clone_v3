@@ -28,15 +28,18 @@ class User(BaseModel, Base):
     def __init__(self, *args, **kwargs):
         """initializes user"""
         super().__init__(*args, **kwargs)
+
+    """
         if "password" in kwargs:
             self.password = kwargs["password"]
 
     @property
     def get_pwd(self):
-        """ password(Getter) """
+        # password(Getter)
         return (self.password)
 
     @password.setter
     def set_password(self, value):
-        """ Passwords setter + hashing """
+        # Passwords setter + hashing
         self.password = hashlib.md5(value.encode()).hexdigest()
+    """
